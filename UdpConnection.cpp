@@ -5,16 +5,17 @@ using namespace r1_firmware;
 void EthernetHandler::setup()
 {
   p = Packet();
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
   digitalWrite(LED_BUILTIN, LOW);
   
   Ethernet.init(17);
   Serial.println("[EthernetHandler] Initialized Ethernet.");
 
   byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x05 };
-  while(Ethernet.begin(mac) != 1)
-  {
-    Serial.print(".");
-  }
+  IPAddress default_ip(192, 168, 11, 2);
+  
+  Ethernet.begin(mac, default_ip);
 
   Serial.print("[EthernetHandler] Start Ethernet on Address : ");
   Serial.println(Ethernet.localIP());
