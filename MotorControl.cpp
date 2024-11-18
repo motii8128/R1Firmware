@@ -34,8 +34,8 @@ void MotorHandler::setup()
   digitalWrite(10, HIGH);
   digitalWrite(11, HIGH);
 
-  // pinMode(26, INPUT_PULLUP);
-  // pinMode(27, INPUT_PULLUP);
+  pinMode(26, INPUT_PULLUP);
+  pinMode(27, INPUT_PULLUP);
 
   Serial.println("[MotorHandler] MotorHandler OK!!!!!!");
 }
